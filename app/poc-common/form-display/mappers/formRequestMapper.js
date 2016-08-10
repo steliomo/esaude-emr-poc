@@ -30,7 +30,7 @@ Poc.Common.FormRequestMapper = (function () {
         
         for (var field in formPayload.form.fields) {
             var eachField = formPayload.form.fields[field];
-            eachField.value = {};
+            eachField.value = undefined;
             //find obs for field
             _.forEach(filteredObs, function (obs) {
                 //compare field concept with obs concept
@@ -38,28 +38,23 @@ Poc.Common.FormRequestMapper = (function () {
                     
                     //multiple select filter
                     if (eachField.fieldConcept.selectMultiple) {
+                        eachField.value = {};
+                        
                         eachField.value[obs.value.uuid] = (_.isEmpty(eachField.fieldConcept.concept.answers)) ? 
                                 obs.value : 
                                         JSON.stringify(realValueOfField(eachField.fieldConcept.concept.answers, obs.value));
                     }
                     else if (eachField.fieldConcept.concept.answers.length === 2 && isTrueFalseQuestion(eachField.fieldConcept.concept.answers)) {
                         eachField.value = JSON.stringify(realValueOfField(eachField.fieldConcept.concept.answers, obs.value));
-                    }else {
+                    } else {
                         eachField.value = (_.isEmpty(eachField.fieldConcept.concept.answers)) ? 
                                 obs.value : 
                                         realValueOfField(eachField.fieldConcept.concept.answers, obs.value);
                     }
-
                 }
 
             });
-
-            if(_.isEmpty(eachField.value)){
-                eachField.value = undefined;
-            }
-
         }
-        console.log(formPayload);
         return formPayload;
     };
     

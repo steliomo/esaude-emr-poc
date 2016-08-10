@@ -26,47 +26,25 @@ angular.module('poc.common.formdisplay')
         var formLogic = {};
         
         formLogic.defaultValueIsLastEntry = function (param) {
-            
             observationsService.get($rootScope.patient.uuid, param).success(function (data) {
                 var nonRetired = observationsService.filterRetiredObs(data.results);
 
                 if (!_.isEmpty(nonRetired)) {
                     var last = _.maxBy(nonRetired, 'obsDatetime');
-
+                    
                     if(last.value.datatype && last.value.datatype.display === "Coded") {
                         $scope.fieldModel.value = realValueOfField($scope.fieldModel.fieldConcept.concept.answers, last.value);
                         return;
                     }
-                    
                     $scope.fieldModel.value = last.value; 
                }
             });
         };
         
         formLogic.calculateOnChange = function (param) {
-            //$scope.$watch('fieldModel.value', function (value) {
-            //    alert(value);
-            //});
         };
         
         formLogic.calculateWithLastObs = function (param) {
-            //var tokens = _.split(param, ',');
-            //var formula = "";
-            //find uuid and replace by value
-            //_.forEach(tokens, function (token) {
-            //    if(validator.isUUID(token)) {
-            //        observationsService.get($rootScope.patient.uuid, token).success(function (data) {
-            //            var nonRetired = observationsService.filterRetiredObs(data.results);
-            //            if (!_.isEmpty(nonRetired)) {
-            //                var last = _.maxBy(nonRetired, 'obsDatetime');
-            //                token = last.value;
-            //                debugger
-            //            }
-            //        });
-            //    }
-            //    formula += token;
-            //});
-            //$scope.fieldModel.value = eval(formula);
         };
             
         (function () {
@@ -113,8 +91,10 @@ angular.module('poc.common.formdisplay')
             return typeof found !== "undefined";
         };
 
-        var compactName = function (name) {
-            return name.trim().replace(/[^a-zA-Z0-9]/g, '');
+        $scope.getConceptInAnswers = function (answres, conceptUuid) {
+            return _.find(answres, function (answer) {
+                return answer.uuid === conceptUuid;
+            });
         };
 
         var realValueOfField = function (conceptAnswers, obsValue) {

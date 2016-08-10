@@ -2,7 +2,7 @@
     {
         "id": "001",
         "formId": "e28b6096-1d5f-11e0-b929-000c29ad1d07",
-        "name": "ANAMNESE A - ADULTO",
+        "name": "INFO SOCIAL - ADULTO",
         "sufix": "anamnesis_a_adult",
         "parts": [
             {
@@ -27,7 +27,7 @@
             },
             {
                 "id": "2",
-                "name": "Info Pessoal e Parseiros Sexuais",
+                "name": "Info Pessoal e Parceiros Sexuais",
                 "sref": ".extra",
                 "nextSref": ".children",
                 "fields": [
@@ -91,7 +91,7 @@
     {
         "id": "002",
         "formId": "e28b6b0e-1d5f-11e0-b929-000c29ad1d07",
-        "name": "ANAMNESE A - PEDIATRIA",
+        "name": "INFO SOCIAL - PEDIATRIA",
         "sufix": "anamnesis_a_child",
         "parts": [
             {
@@ -235,8 +235,20 @@
                         }
                     },
                     {
-                        "name": "Pressão Arterial",
+                        "name": "Pressão Arterial Sistolica",
                         "id": "e292b648-1d5f-11e0-b929-000c29ad1d07"
+                    },
+                    {
+                        "name": "Pressão Arterial Diastolica",
+                        "id": "e293ed7e-1d5f-11e0-b929-000c29ad1d07"
+                    },
+                    {
+                        "name": "Frequencia Cardiaca",
+                        "id": "a32767e4-3b41-411e-ad5d-a989cedaab40"
+                    },
+                    {
+                        "name": "Frequencia Respiratoria",
+                        "id": "da5764e3-8a5d-4e14-8712-79adfe52a0b6"
                     }
                 ]
             }
@@ -268,6 +280,14 @@
                         "logics ": {
                             "defaultValueIsLastEntry": "e1e2e934-1d5f-11e0-b929-000c29ad1d07"
                         }
+                    },
+                    {
+                        "name": "Frequencia Cardiaca",
+                        "id": "1abdb9ec-acad-4a7c-820f-5de3642a02aa"
+                    },
+                    {
+                        "name": "Frequencia Respiratoria",
+                        "id": "69ae6e37-586a-482c-bbff-02a7bfaacb5e"
                     }
                 ]
             }
@@ -344,7 +364,7 @@
     {
         "id": "006",
         "formId": "e28aa7aa-1d5f-11e0-b929-000c29ad1d07",
-        "name": "OMS ESTADIO",
+        "name": "OMS ESTADIO - ADULTO",
         "sufix": "oms_adult",
         "parts": [
             {
@@ -412,6 +432,59 @@
                         "logics": {
                             "calculateWHOStage": "e1e53c02-1d5f-11e0-b929-000c29ad1d07"
                         }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "007",
+        "formId": "65896366-17b2-4c3e-9cce-440edcfe7b4e",
+        "name": "OBS STORY",
+        "sufix": "obs_story",
+        "parts": [
+            {
+                "id": "1",
+                "name": "CURRENT STORY",
+                "sref": ".current_story",
+                "nextSref": ".confirm",
+                "fields": [
+                    {
+                        "name": "notes",
+                         "id": "24045d41-df1a-42c5-a323-5bcb98b6b291",
+                         "textSize": "8"
+                    },
+                    {
+                        "name": "message type",
+                         "id": "d277616c-66b7-49c2-b7c4-dee202bf3d34"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "008",
+        "formId": "e28aa7aa-1d5f-11e0-b929-000c29ad1d07",
+        "name": "DIAGNOSTICOS - ADULTO",
+        "sufix": "diagnostc_adult",
+        "parts": [
+            {
+                "id": "1",
+                "name": "Rastreio de TB",
+                "sref": ".rastreio_tb",
+                "nextSref": ".confirm",
+                "fields": [
+                    {
+                        "name": "Rastreio de ITS (Tem sintomas sugestivas para ITS)?",
+                        "id": "f48e94e9-fce6-4b98-b55f-a4bf36365142"
+                    },
+                    {
+                        "name": "Rastreio de TB (Tem sintomas sugestivas para TB)?",
+                        "id": "f0e7e2a1-334e-4691-9f2c-df22c4faf656"
+                    },
+                    {
+                        "name": "Data de Inicio",
+                        "id": "8c1e8e02-cbeb-49e3-89cc-7e28eae598c1"
                     }
                 ]
             }
