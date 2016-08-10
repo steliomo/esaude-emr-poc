@@ -111,5 +111,6 @@
     "CLINIC_PATIENT_HEIGHT": "Height (cm)",
     "CLINIC_PATIENT_BMI": "BMI",
     "CLINIC_PATIENT_CURRENT_STATE": "Current State",
-    "LOGIN_LABEL_LOGGEDIN_KEY": "Logged in as"
+    "LOGIN_LABEL_LOGGEDIN_KEY": "Logged in as",
+    "CLINIC_PATIENT_CURRENT_STATUS" : "Current clinical status"
 }
